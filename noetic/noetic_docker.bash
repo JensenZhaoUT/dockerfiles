@@ -1,15 +1,16 @@
 xhost local:root
 XAUTH=/tmp/.docker.xauth
 docker run -it \
-    --name=try_it2\
+    --name=noetic-conda2\
     --env="DISPLAY=$DISPLAY" \
     --env="QT_X11_NO_MITSHM=1" \
     --env="XAUTHORITY=$XAUTH" \
-    --volume="myVolume:/catkin_ws/src" \
-    --mount type=bind,source=/home/jensen/kinetic,target=/home/jensen/kinetic \
+    --volume="myVolume_noetic:/catkin_ws/src" \
+    --volume="/dev/bus/usb:/dev/bus/usb" \
+    --mount type=bind,source=/home/jensen/noetic,target=/home/jensen/noetic \
     --net=host \
     --privileged \
-    ros-kinetic \
+    ros-noetic2 \
     bash
 
 echo "Done."
